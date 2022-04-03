@@ -3,8 +3,8 @@ import pickle
 import streamlit as st
  
 # loading the trained model
-pickle_in = open('classifier.pkl', 'rb') 
-classifier = pickle.load(pickle_in)
+# pickle_in = open('classifier.pkl', 'rb') 
+# classifier = pickle.load(pickle_in)
  
 @st.cache()
   
@@ -62,7 +62,7 @@ def main():
       
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
-        result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History) 
+        # result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History) 
         st.success('Your loan is {}'.format(result))
         print(LoanAmount)
      
