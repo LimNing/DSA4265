@@ -44,8 +44,16 @@ def prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History):
 def main():       
     # front end elements of the web page 
     html_temp = """ 
-    <div style ="background-color:yellow;padding:13px"> 
-    <h1 style ="color:black;text-align:center;">Streamlit Loan Prediction ML App</h1> 
+    <style>
+      .stApp {
+        background: #0d2233;
+      }
+      td {
+        text-align: center;
+      }
+    </style>
+    <div style ="padding:13px"> 
+    <h1 style ="color:lightgrey;text-align:center;">Ship Emission Efficiency</h1> 
     </div> 
     """
       
@@ -53,18 +61,52 @@ def main():
     st.markdown(html_temp, unsafe_allow_html = True) 
       
     # following lines create boxes in which user can enter data required to make prediction 
-    Gender = st.selectbox('Gender',("Male","Female"))
-    Married = st.selectbox('Marital Status',("Unmarried","Married")) 
-    ApplicantIncome = st.number_input("Applicants monthly income") 
-    LoanAmount = st.number_input("Total loan amount")
-    Credit_History = st.selectbox('Credit_History',("Unclear Debts","No Unclear Debts"))
-    result =""
+    TechnicalEfficiency = st.number_input("Technical Efficiency")
+    CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]")
+    CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]") 
+    CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]")
+    CO2Within = st.number_input("CO₂ emissions which occurred within ports under a MS jurisdiction at berth [m tonnes]")
+    TimeSea = st.number_input("Annual Total time spent at sea [hours]")
+    CO2Dist = st.number_input("Annual average CO₂ emissions per distance [kg CO₂ / n mile]")
+    CO2Transport = st.number_input("Annual average CO₂ emissions per transport work (mass) [g CO₂ / m tonnes · n miles]")
       
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
         # result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History) 
         st.success('Your loan is {}'.format(result))
         print(LoanAmount)
+
+    html_temp2 = """ 
+    <table style="margin-left:auto; margin-right:auto;">
+      <tr>
+        <th>Group</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>B</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>C</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>D</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>X</td>
+        <td></td>
+      </tr>
+    </table>
+    """
+      
+    # display the front end aspect
+    st.markdown(html_temp2, unsafe_allow_html = True) 
      
 if __name__=='__main__': 
     main()
