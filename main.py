@@ -53,6 +53,7 @@ def main():
       .stApp {
         background-image: url("https://raw.githubusercontent.com/LimNing/DSA4265/main/bg.png");
         background-size: cover;
+        background-position: bottom;
       }
       td {
         text-align: center;
@@ -83,7 +84,7 @@ def main():
         st.success('Your ship belongs to Group {}'.format(result))
 
     html_temp2 = """ 
-    <table style="margin-left:auto; margin-right:auto;">
+    <table style="margin-left:auto; margin-right:auto; background-color: rgba(255, 255, 255, 0.8);">
       <tr>
         <th>Group</th>
         <th>Description</th>
