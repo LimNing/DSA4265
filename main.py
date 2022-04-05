@@ -51,14 +51,15 @@ def main():
     html_temp = """ 
     <style>
       .stApp {
-        background: #0d2233;
+        background-image: url("https://raw.githubusercontent.com/LimNing/DSA4265/main/bg.png");
+        background-size: cover;
       }
       td {
         text-align: center;
       }
     </style>
     <div style ="padding:13px"> 
-    <h1 style ="color:lightgrey;text-align:center;">Ship Emission Efficiency</h1> 
+    <h1 style ="color:#212121;text-align:center;">Ship Emission Efficiency</h1> 
     </div> 
     """
       
