@@ -68,15 +68,15 @@ def main():
     st.markdown(html_temp, unsafe_allow_html = True) 
       
     # following lines create boxes in which user can enter data required to make prediction 
-    TechnicalEfficiency = st.number_input("Technical Efficiency")
-    TotalCO2 = st.number_input("Total CO₂ emissions [m tonnes]")
-    CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]")
-    CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]") 
-    CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]")
-    CO2Within = st.number_input("CO₂ emissions which occurred within ports under a MS jurisdiction at berth [m tonnes]")
-    TimeSea = st.number_input("Annual Total time spent at sea [hours]")
-    CO2Dist = st.number_input("Annual average CO₂ emissions per distance [kg CO₂ / n mile]")
-    CO2Transport = st.number_input("Annual average CO₂ emissions per transport work (mass) [g CO₂ / m tonnes · n miles]")
+    TechnicalEfficiency = st.number_input("Technical Efficiency", value = 0)
+    TotalCO2 = st.number_input("Total CO₂ emissions [m tonnes]", value = 0)
+    CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]", value = 0)
+    CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]", value = 0) 
+    CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]", value = 0)
+    CO2Within = st.number_input("CO₂ emissions which occurred within ports under a MS jurisdiction at berth [m tonnes]", value = 0)
+    TimeSea = st.number_input("Annual Total time spent at sea [hours]", value = 0)
+    CO2Dist = st.number_input("Annual average CO₂ emissions per distance [kg CO₂ / n mile]", value = 0)
+    CO2Transport = st.number_input("Annual average CO₂ emissions per transport work (mass) [g CO₂ / m tonnes · n miles]", value = 0)
       
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
