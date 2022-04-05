@@ -1,42 +1,47 @@
 # main
+import sklearn
 import pickle
 import streamlit as st
  
 # loading the trained model
-# pickle_in = open('classifier.pkl', 'rb') 
-# classifier = pickle.load(pickle_in)
+pickle_in = open('classifier.pkl', 'rb') 
+classifier = pickle.load(pickle_in)
  
 @st.cache()
   
 # defining the function which will make the prediction using the data which the user inputs 
-def prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History):   
+def prediction(TechnicalEfficiency, TotalCO2, CO2Between, CO2Depart, CO2To, CO2Within, TimeSea, CO2Dist, CO2Transport):   
  
     # Pre-processing user input    
-    if Gender == "Male":
-        Gender = 0
-    else:
-        Gender = 1
+    # if Gender == "Male":
+    #     Gender = 0
+    # else:
+    #     Gender = 1
  
-    if Married == "Unmarried":
-        Married = 0
-    else:
-        Married = 1
+    # if Married == "Unmarried":
+    #     Married = 0
+    # else:
+    #     Married = 1
  
-    if Credit_History == "Unclear Debts":
-        Credit_History = 0
-    else:
-        Credit_History = 1  
+    # if Credit_History == "Unclear Debts":
+    #     Credit_History = 0
+    # else:
+    #     Credit_History = 1  
  
-    LoanAmount = LoanAmount / 1000
+    # LoanAmount = LoanAmount / 1000
  
-    # Making predictions 
+    # Making predictions
     prediction = classifier.predict( 
-        [[Gender, Married, ApplicantIncome, LoanAmount, Credit_History]])
+        [[TechnicalEfficiency, TotalCO2, CO2Between, CO2Depart, CO2To, CO2Within, TimeSea, CO2Dist, CO2Transport]])
      
     if prediction == 0:
-        pred = 'Rejected'
-    else:
-        pred = 'Approved'
+        pred = 'D'
+    elif prediction == 1:
+        pred = 'C'
+    elif prediction == 2:
+        pred = 'B'
+    elif prediction == 3:
+        pred = 'A'
     return pred
       
   
@@ -62,6 +67,7 @@ def main():
       
     # following lines create boxes in which user can enter data required to make prediction 
     TechnicalEfficiency = st.number_input("Technical Efficiency")
+    TotalCO2 = st.number_input("Total CO₂ emissions [m tonnes]")
     CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]")
     CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]") 
     CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]")
@@ -72,9 +78,8 @@ def main():
       
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
-        # result = prediction(Gender, Married, ApplicantIncome, LoanAmount, Credit_History) 
-        st.success('Your loan is {}'.format(result))
-        print(LoanAmount)
+        result = prediction(TechnicalEfficiency, TotalCO2, CO2Between, CO2Depart, CO2To, CO2Within, TimeSea, CO2Dist, CO2Transport) 
+        st.success('Your ship belongs to Group {}'.format(result))
 
     html_temp2 = """ 
     <table style="margin-left:auto; margin-right:auto;">
@@ -96,10 +101,6 @@ def main():
       </tr>
       <tr>
         <td>D</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>X</td>
         <td></td>
       </tr>
     </table>
