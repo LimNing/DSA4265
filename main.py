@@ -1,4 +1,5 @@
 # main
+import sklearn
 import pickle
 import streamlit as st
  
