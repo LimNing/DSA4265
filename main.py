@@ -82,7 +82,7 @@ def main():
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
         result = prediction(TechnicalEfficiency, TotalCO2, CO2Between, CO2Depart, CO2To, CO2Within, TimeSea, CO2Dist, CO2Transport) 
-        st.success('Your ship belongs to Group {}'.format(result))
+        st.success("Your ship's grade is {}.".format(result))
 
     html_temp2 = """ 
     <table style="margin-left:auto; margin-right:auto; background-color: rgba(255, 255, 255, 0.8);">
