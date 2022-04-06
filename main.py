@@ -37,11 +37,11 @@ def prediction(TechnicalEfficiency, TotalCO2, CO2Between, CO2Depart, CO2To, CO2W
     if prediction == 0:
         pred = 'D'
     elif prediction == 1:
-        pred = 'C'
-    elif prediction == 2:
         pred = 'B'
-    elif prediction == 3:
+    elif prediction == 2:
         pred = 'A'
+    elif prediction == 3:
+        pred = 'C'
     return pred
       
   
@@ -67,16 +67,17 @@ def main():
     # display the front end aspect
     st.markdown(html_temp, unsafe_allow_html = True) 
       
-    # following lines create boxes in which user can enter data required to make prediction 
-    TechnicalEfficiency = st.number_input("Technical Efficiency", value = 0)
-    TotalCO2 = st.number_input("Total CO₂ emissions [m tonnes]", value = 0)
-    CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]", value = 0)
-    CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]", value = 0) 
-    CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]", value = 0)
-    CO2Within = st.number_input("CO₂ emissions which occurred within ports under a MS jurisdiction at berth [m tonnes]", value = 0)
-    TimeSea = st.number_input("Annual Total time spent at sea [hours]", value = 0)
-    CO2Dist = st.number_input("Annual average CO₂ emissions per distance [kg CO₂ / n mile]", value = 0)
-    CO2Transport = st.number_input("Annual average CO₂ emissions per transport work (mass) [g CO₂ / m tonnes · n miles]", value = 0)
+    # following lines create boxes in which user can enter data required to make prediction
+    ShipType = st.selectbox('Ship Type', ('Bulk Carrier', 'General Cargo', 'Passenger Ship'))
+    TechnicalEfficiency = st.number_input("Technical Efficiency")
+    TotalCO2 = st.number_input("Total CO₂ emissions [m tonnes]")
+    CO2Between = st.number_input("CO₂ emissions from all voyages between ports under a MS jurisdiction [m tonnes]")
+    CO2Depart = st.number_input("CO₂ emissions from all voyages which departed from ports under a MS jurisdiction [m tonnes]") 
+    CO2To = st.number_input("CO₂ emissions from all voyages to ports under a MS jurisdiction [m tonnes]")
+    CO2Within = st.number_input("CO₂ emissions which occurred within ports under a MS jurisdiction at berth [m tonnes]")
+    TimeSea = st.number_input("Annual Total time spent at sea [hours]")
+    CO2Dist = st.number_input("Annual average CO₂ emissions per distance [kg CO₂ / n mile]")
+    CO2Transport = st.number_input("Annual average CO₂ emissions per transport work (mass) [g CO₂ / m tonnes · n miles]")
       
     # when 'Predict' is clicked, make the prediction and store it 
     if st.button("Predict"): 
@@ -91,19 +92,19 @@ def main():
       </tr>
       <tr>
         <td>A</td>
-        <td></td>
+        <td>Spends most time at the sea, most efficient in terms of emission per transport mass, clearly having the best technical efficiency.</td>
       </tr>
       <tr>
         <td>B</td>
-        <td></td>
+        <td>Spends a decent amount of time at the sea, has the second lowest emission rate.</td>
       </tr>
       <tr>
         <td>C</td>
-        <td></td>
+        <td>Spends a decent amount of time at the sea, but has a higher emission rate.</td>
       </tr>
       <tr>
         <td>D</td>
-        <td></td>
+        <td>A ship in this cluster spends less time at the sea, and it carries more transport mass.</td>
       </tr>
     </table>
     """
