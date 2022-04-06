@@ -87,24 +87,24 @@ def main():
     html_temp2 = """ 
     <table style="margin-left:auto; margin-right:auto; background-color: rgba(255, 255, 255, 0.8);">
       <tr>
-        <th>Group</th>
+        <th>Grade</th>
         <th>Description</th>
       </tr>
       <tr>
         <td>A</td>
-        <td>Spends most time at the sea, most efficient in terms of emission per transport mass, clearly having the best technical efficiency.</td>
+        <td>These vessels are marked as emission efficient.</td>
       </tr>
       <tr>
         <td>B</td>
-        <td>Spends a decent amount of time at the sea, has the second lowest emission rate.</td>
+        <td>These vessels are will be highlighted as making progress towards reducing emissions.</td>
       </tr>
       <tr>
         <td>C</td>
-        <td>Spends a decent amount of time at the sea, but has a higher emission rate.</td>
+        <td>These vessels will be marked as having medium efficiency.</td>
       </tr>
       <tr>
         <td>D</td>
-        <td>A ship in this cluster spends less time at the sea, and it carries more transport mass.</td>
+        <td>These vessels will be marked as inefficient .</td>
       </tr>
     </table>
     """
